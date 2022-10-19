@@ -37,7 +37,7 @@ public class Test {
 
 
 
-        MyArrayList<Student> studentMyArrraylist = new MyArrayList();
+        MyArrayList<Student> studentMyArrraylist = new MyArrayList<>();
         studentMyArrraylist.add(a);
         studentMyArrraylist.add(b);
         studentMyArrraylist.add(c);

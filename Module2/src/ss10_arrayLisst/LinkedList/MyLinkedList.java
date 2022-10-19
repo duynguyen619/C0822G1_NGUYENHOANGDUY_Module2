@@ -71,7 +71,6 @@ public class MyLinkedList<E> {
         } else {
             for (int i = 0; i < index - 1 && temp.next != null; i++) {
                 temp = temp.next;
-
             }
             data = temp.next.data;
             temp.next = temp.next.next;
@@ -106,4 +105,3 @@ public class MyLinkedList<E> {
         return false;
     }
 }
-
