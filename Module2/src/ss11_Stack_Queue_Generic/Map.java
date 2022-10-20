@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class Map {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String str = "hello words hello words duy";
-        str = str.replaceAll(",","");
+        str = str.replaceAll(",", "");
         String[] arr = str.split(" ");
         String key;
         Integer value;
@@ -22,7 +22,7 @@ public class Map {
             }
         }
 
-        Set<String> set=map.keySet();
+        Set<String> set = map.keySet();
 
         for (String s : set) {
             key = s;

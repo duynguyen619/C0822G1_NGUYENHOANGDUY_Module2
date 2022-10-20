@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class Reverse {
     public static void main(String[] args) {
-        int[] numberOne = new int[]{1,2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] numberOne = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         reverseIntegerUseStack(numberOne);
         System.out.println(Arrays.toString(numberOne));
         String fullName = "NGUYỄN HOÀNG DUY";
