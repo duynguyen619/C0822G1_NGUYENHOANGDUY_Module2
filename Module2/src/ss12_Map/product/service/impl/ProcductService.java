@@ -1,14 +1,14 @@
 package ss12_Map.product.service.impl;
 
 import ss12_Map.product.model.Product;
-import ss12_Map.product.service.IProduct;
+import ss12_Map.product.service.IProductService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class ProcductService implements IProduct {
+public class ProcductService implements IProductService {
     private static final Scanner scanner = new Scanner(System.in);
     private static final List<Product> products = new ArrayList<>();
 
@@ -20,7 +20,7 @@ public class ProcductService implements IProduct {
 
 
     public void addProduct() {
-        Product product = this.infoProduct();
+        Product product = this.InfoProduct();
         products.add(product);
         System.out.println("Thêm mới thành công");
     }
@@ -59,17 +59,17 @@ public class ProcductService implements IProduct {
     }
 
     public Product findProduct() {
-        System.out.println("Mời bạn nhập vào id cần xóa");
-        String id = scanner.nextLine();
+        System.out.println("Mời bạn nhập vào tên cần xóa");
+        String name = scanner.nextLine();
         for (Product product : products) {
-            if (Objects.equals(product.getId(), id)) {
+            if (Objects.equals(product.getName(), name)) {
                 return product;
             }
         }
         return null;
     }
 
-    public Product infoProduct() {
+    public Product InfoProduct() {
         String id = "SV-" + (products.size() + 1);
         System.out.print("Mời bạn nhập tên sản phẩm: ");
         String name = scanner.nextLine();

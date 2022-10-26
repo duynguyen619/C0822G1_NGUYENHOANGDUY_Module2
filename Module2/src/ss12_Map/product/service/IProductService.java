@@ -1,6 +1,6 @@
 package ss12_Map.product.service;
 
-public interface IProduct {
+public interface IProductService {
     void displayProduct();
 
     void addProduct();

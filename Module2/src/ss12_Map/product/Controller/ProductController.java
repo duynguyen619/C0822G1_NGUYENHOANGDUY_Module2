@@ -1,13 +1,13 @@
 package ss12_Map.product.Controller;
 
-import ss12_Map.product.service.IProduct;
+import ss12_Map.product.service.IProductService;
 import ss12_Map.product.service.impl.ProcductService;
 
 import java.util.Scanner;
 
 public class ProductController {
     private static final Scanner scanner = new Scanner(System.in);
-    private final IProduct product = new ProcductService();
+    private final IProductService product = new ProcductService();
     public void menuMangement() {
         while (true) {
             System.out.println("-----------------------------------------------------");
