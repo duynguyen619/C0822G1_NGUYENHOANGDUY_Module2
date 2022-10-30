@@ -14,9 +14,9 @@ public class CopyFile {
         String[] array;
         int sum = 0;
         try {
-            fileReader= new FileReader(file);
+            fileReader = new FileReader(file);
             br = new BufferedReader(fileReader);
-            while ((line = br.readLine()) !=null){
+            while ((line = br.readLine()) != null) {
                 array = line.split("");
                 sum += array.length;
                 list.add(line);
@@ -49,6 +49,6 @@ public class CopyFile {
     public static void main(String[] args) {
         CopyFile copyTextFile = new CopyFile();
         List<String> list = copyTextFile.readFile("src/ss16_textfile/copyfile/Source.csv");
-        copyTextFile.writeFile(list, "src/ss16_textfile/copyfile/Target.csv",true);
+        copyTextFile.writeFile(list, "src/ss16_textfile/copyfile/Target.csv", true);
     }
 }

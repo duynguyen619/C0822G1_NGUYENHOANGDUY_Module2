@@ -15,7 +15,7 @@ public class CountryCsv {
         String line;
         String[] array;
         try {
-            if (!file.exists()){
+            if (!file.exists()) {
                 throw new FileNotFoundException();
             }
             fileReader = new FileReader(file);
@@ -62,11 +62,10 @@ public class CountryCsv {
         list.add(new Country(8, "TH", "Thailand"));
 
         CountryCsv countryCSV = new CountryCsv();
-        countryCSV.writeFile(list, "src/ss16_textfile/readfile/test.csv", false );
+        countryCSV.writeFile(list, "src/ss16_textfile/readfile/test.csv", false);
         List<Country> countryList = countryCSV.readFile("src/ss16_textfile/readfile/test.csv");
         for (Country country : countryList) {
             System.out.println(country);
         }
-
     }
 }
