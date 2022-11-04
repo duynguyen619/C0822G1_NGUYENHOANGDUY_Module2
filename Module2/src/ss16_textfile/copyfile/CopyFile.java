@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CopyFile {
-    public List<String> readFile(String filePath) {
+    public List<String> readFile(String filePath) throws IOException {
         List<String> list = new ArrayList<>();
         File file = new File(filePath);
         FileReader fileReader;
@@ -13,7 +13,6 @@ public class CopyFile {
         String line;
         String[] array;
         int sum = 0;
-        try {
             fileReader = new FileReader(file);
             br = new BufferedReader(fileReader);
             while ((line = br.readLine()) != null) {
@@ -22,9 +21,6 @@ public class CopyFile {
                 list.add(line);
             }
             br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         System.out.println("Số kí tự trong tệp: " + sum);
         return list;
     }
@@ -46,7 +42,7 @@ public class CopyFile {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         CopyFile copyTextFile = new CopyFile();
         List<String> list = copyTextFile.readFile("src/ss16_textfile/copyfile/Source.csv");
         copyTextFile.writeFile(list, "src/ss16_textfile/copyfile/Target.csv", true);
