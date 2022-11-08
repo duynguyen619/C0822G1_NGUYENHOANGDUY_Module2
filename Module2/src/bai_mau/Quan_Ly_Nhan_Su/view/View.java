@@ -1,6 +1,6 @@
-package Bai_Tap_Lam_Them.Quan_Ly_Nhan_Su.view;
+package bai_mau.Quan_Ly_Nhan_Su.view;
 
-import Bai_Tap_Lam_Them.Quan_Ly_Nhan_Su.controller.PersonnelController;
+import bai_mau.Quan_Ly_Nhan_Su.controller.PersonnelController;
 
 import java.io.IOException;
 

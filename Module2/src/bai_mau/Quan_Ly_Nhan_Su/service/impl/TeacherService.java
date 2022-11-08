@@ -1,13 +1,17 @@
-package Bai_Tap_Lam_Them.Quan_Ly_Nhan_Su.service.impl;
+package bai_mau.Quan_Ly_Nhan_Su.service.impl;
 
-import Bai_Tap_Lam_Them.Quan_Ly_Nhan_Su.model.Teacher;
-import Bai_Tap_Lam_Them.Quan_Ly_Nhan_Su.service.ITeacher;
+
+
+import bai_mau.Quan_Ly_Nhan_Su.model.Student;
+import bai_mau.Quan_Ly_Nhan_Su.model.Teacher;
+import bai_mau.Quan_Ly_Nhan_Su.service.ITeacher;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+
 
 public class TeacherService implements ITeacher {
 
@@ -17,23 +21,23 @@ public class TeacherService implements ITeacher {
 
     static {
         try {
-            teacherList = readTeacherFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Teacher.txt");
+            teacherList = readTeacherFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Teacher.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static final String PATH_NAME_FILE_TEACHER = "src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Teacher.txt";
+    private static final String PATH_NAME_FILE_TEACHER = "src/bai_mau/Quan_Ly_Nhan_Su/data/Teacher.txt";
 
     public void displayAllTeacher() throws IOException {
-        teacherList = readTeacherFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Teacher.txt");
+        teacherList = readTeacherFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Teacher.txt");
         for (Teacher teacher : teacherList) {
             System.out.println(teacher);
         }
     }
 
     public void addTeacher() throws IOException {
-        teacherList = readTeacherFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Teacher.txt");
+        teacherList = readTeacherFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Teacher.txt");
         Teacher teacher = this.infoTeacher();
         boolean swap = true;
         for (int k = 0; k < teacherList.size() - 1 && swap; k++) {
@@ -48,13 +52,13 @@ public class TeacherService implements ITeacher {
             }
         }
         teacherList.add(teacher);
-        writeTeachertFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Teacher.txt", teacherList);
+        writeTeachertFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Teacher.txt", teacherList);
         System.out.println("Thêm mới học sinh thành công");
     }
 
 
     public void removeTeacher() throws IOException {
-        teacherList = readTeacherFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Teacher.txt");
+        teacherList = readTeacherFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Teacher.txt");
         Teacher teacher = this.findTeacher();
         if (teacher == null) {
             System.err.println("Không tìm thấy đối tượng cần xóa");
@@ -71,7 +75,7 @@ public class TeacherService implements ITeacher {
     }
 
     private Teacher findTeacher() throws IOException {
-        teacherList = readTeacherFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Teacher.txt");
+        teacherList = readTeacherFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Teacher.txt");
         System.out.println("Mời bạn nhập vào id cần xóa: ");
         String id = scanner.nextLine();
         for (Teacher teacher : teacherList) {
@@ -87,8 +91,8 @@ public class TeacherService implements ITeacher {
         while (true) {
             try {
                 id = "GV-" + (teacherList.size() + 1);
-                for (int i = 0; i < teacherList.size(); i++) {
-                    if (teacherList.get(i).getId() == id) {
+                for (Teacher teacher : teacherList) {
+                    if (Objects.equals(teacher.getId(), id)) {
                         throw new IOException("Id này đã tồn tại. Vui lòng nhập id khác.");
                     }
                 }
@@ -227,7 +231,7 @@ public class TeacherService implements ITeacher {
     }
 
     public void editTeacher() throws IOException {
-        teacherList = readTeacherFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Teacher.txt");
+        teacherList = readTeacherFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Teacher.txt");
         displayAllTeacher();
         System.out.println("Chọn sinh viên cần sửa:");
         String edit = scanner.nextLine();
@@ -333,9 +337,8 @@ public class TeacherService implements ITeacher {
         String[] info;
         for (String line : strings) {
             info = line.split(",");
-            teacherList.add(new Teacher(info[0], info[1], LocalDate.parse(info[2]), info[3], info[4]));
+            teacherList.add(new Teacher(info[0],info[1],LocalDate.parse(info[2]),info[3],info[4]));
         }
-
         return teachers;
     }
 
@@ -347,12 +350,11 @@ public class TeacherService implements ITeacher {
     }
 
     public static void writeTeachertFile(String path, List<Teacher> teachers) throws IOException {
-        String data = "";
+        String data = " ";
         for (Teacher teacher : teachers) {
             data += teacher.toString();
             data += "\n";
         }
-
         writeFile(path, data);
     }
 }

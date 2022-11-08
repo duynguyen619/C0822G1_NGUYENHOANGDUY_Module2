@@ -1,9 +1,8 @@
-package Bai_Tap_Lam_Them.Quan_Ly_Nhan_Su.service.impl;
+package bai_mau.Quan_Ly_Nhan_Su.service.impl;
 
 
-import Bai_Tap_Lam_Them.Quan_Ly_Nhan_Su.model.Student;
-import Bai_Tap_Lam_Them.Quan_Ly_Nhan_Su.service.IStudent;
-
+import bai_mau.Quan_Ly_Nhan_Su.model.Student;
+import bai_mau.Quan_Ly_Nhan_Su.service.IStudent;
 
 import java.io.*;
 import java.net.PortUnreachableException;
@@ -12,24 +11,25 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+
 public class StudentService implements IStudent {
     private static final Scanner scanner = new Scanner(System.in);
     private static List<Student> studentList;
 
     static {
         try {
-            studentList = readStudentFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Student.txt");
+            studentList = readStudentFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Student.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static final String PATH_NAME_FILE_STUDENT = "src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Student.txt";
+    private static final String PATH_NAME_FILE_STUDENT = "src/bai_mau/Quan_Ly_Nhan_Su/data/Student.txt";
 
     @Override
     public void displayAllStudent() {
         try {
-            studentList = readStudentFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Student.txt");
+            studentList = readStudentFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Student.txt");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -40,7 +40,7 @@ public class StudentService implements IStudent {
 
     @Override
     public void addStudent() throws IOException {
-        studentList = readStudentFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Student.txt");
+        studentList = readStudentFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Student.txt");
         Student student = this.infoStudent();
         boolean swap = true;
         for (int k = 0; k < studentList.size() - 1 && swap; k++) {
@@ -55,14 +55,14 @@ public class StudentService implements IStudent {
             }
         }
         studentList.add(student);
-        writeStudentFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Student.txt", studentList);
+        writeStudentFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Student.txt", studentList);
         System.out.println("Thêm mới học sinh thành công");
     }
 
 
     @Override
     public void removeStudent() throws IOException {
-        studentList = readStudentFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Student.txt");
+        studentList = readStudentFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Student.txt");
         Student student = this.findStudent();
         if (student == null) {
             System.err.println("Không tìm thấy đối tượng cần xóa");
@@ -79,7 +79,7 @@ public class StudentService implements IStudent {
     }
 
     private Student findStudent() throws IOException {
-        studentList = readStudentFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Student.txt");
+        studentList = readStudentFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Student.txt");
         System.out.println("Mời bạn nhập vào id cần xóa: ");
         String id = scanner.nextLine();
         for (Student student : studentList) {
@@ -92,7 +92,7 @@ public class StudentService implements IStudent {
 
     public void search() {
         try {
-            studentList = readStudentFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Student.txt");
+            studentList = readStudentFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Student.txt");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -111,7 +111,7 @@ public class StudentService implements IStudent {
     }
 
     public void editStudent() throws IOException {
-        studentList = readStudentFile("src/Bai_Tap_Lam_Them/Quan_Ly_Nhan_Su/data/Student.txt");
+        studentList = readStudentFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Student.txt");
         displayAllStudent();
         System.out.println("Chọn giáo viên cần sửa ");
         String edit = scanner.nextLine();
@@ -200,7 +200,7 @@ public class StudentService implements IStudent {
             try  {
                 System.out.print("Mời bạn nhập tên: ");
                 name = scanner.nextLine();
-                if (name.toLowerCase().matches("[A-Za-zvxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ]{5,50}")) {
+                if (name.toLowerCase().matches("[A-Za-zvxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ ]{5,50}")) {
                     break;
                 } else {
                     System.out.println("mời nhập lại");

@@ -1,4 +1,4 @@
-package Bai_Tap_Lam_Them.Quan_Ly_Nhan_Su.model;
+package bai_mau.Quan_Ly_Nhan_Su.model;
 
 
 import java.time.LocalDate;
@@ -6,9 +6,9 @@ import java.time.LocalDate;
 public class Teacher extends Personnel {
     private String level;
 
-    public Teacher(String id, String name, LocalDate dateOfBirth, String gender, String specialize) {
+    public Teacher(String id, String name, LocalDate dateOfBirth, String gender, String level) {
         super(id, name, dateOfBirth, gender);
-        this.level = specialize;
+        this.level = level;
     }
 
     public String getLevel() {
@@ -20,6 +20,7 @@ public class Teacher extends Personnel {
     }
 
     @Override
-    public String toString() {return String.format("%s", super.toString(),level);}
-
+    public String toString() {
+        return String.format("%s", super.toString(), level);
+    }
 }

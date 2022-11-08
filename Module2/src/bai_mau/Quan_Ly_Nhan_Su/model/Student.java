@@ -1,4 +1,4 @@
-package Bai_Tap_Lam_Them.Quan_Ly_Nhan_Su.model;
+package bai_mau.Quan_Ly_Nhan_Su.model;
 
 import java.time.LocalDate;
 
